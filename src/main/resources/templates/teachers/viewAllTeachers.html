@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">>
+<head>
+  <meta charset="UTF-8">
+  <title>Все курсы</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .card{
+      margin-bottom: 20px; /* Расстояние между блоками */
+      width: 25rem;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div layout:fragment="content">
+    <h1>Наши преподаватели</h1>
+    <div class="row">
+      <div class="col">
+        <a href="teachers/add" class="btn btn-primary" role="button" style="float: right">Добавить преподавателя</a>
+      </div>
+    </div>
+    <div class="card text-white bg-secondary mb-3" th:each="teacher : ${teachers}">
+      <div class="card-header" th:text="${teacher.getSubject().getSubjectTextDisplay()}"></div>
+      <div class="card-body">
+        <h5 class="card-title">
+          <a class="nav-link" th:href="'/teachers/' + ${teacher.getId()}" th:text="${teacher.getTeacherFIO()}"></a>
+        </h5>
+        <p class="card-text" th:text="${teacher.getDescription()}"></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

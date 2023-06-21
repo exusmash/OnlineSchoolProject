@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:fragment="header">
+<head>
+    <meta charset="UTF-8">
+    <title>Онлайн школа</title>
+    <!-- Включение стилей Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- Добавление пользовательских стилей -->
+    <style>
+        /* Цвет шапки */
+        .navbar {
+            background-color: #337ab7; /* Голубой цвет */
+        }
+
+        /* Цвет ссылок в шапке */
+        .navbar-light .navbar-nav .nav-link {
+            color: #575757; /* Белый цвет */
+        }
+
+        /* Цвет активной ссылки в шапке */
+        .navbar-light .navbar-nav .nav-link.active {
+            color: #ffd700; /* Золотистый цвет */
+        }
+    </style>
+</head>
+<body>
+<!-- Шапка страницы -->
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">Онлайн школа</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/courses">Наши курсы</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false">
+                        Предметы
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                        <li th:each="subject, i : ${T(com.example.onlineschoolproject.model.Subject).values()}">
+                            <a class="dropdown-item" th:href="'subjects/' + ${subject.getSubjectTextDisplay()}" th:text="${subject.subjectTextDisplay}"></a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/teachers">Наши преподаватели</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

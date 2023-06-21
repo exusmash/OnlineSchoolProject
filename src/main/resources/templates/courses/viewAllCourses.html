@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">>
+<head>
+    <meta charset="UTF-8">
+    <title>Все курсы</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .card{
+            margin-bottom: 20px; /* Расстояние между блоками */
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div layout:fragment="content">
+        <h1>Все курсы онлайн школы</h1>
+        <div class="row" style="margin-bottom: 20px;">
+            <div class="col">
+                <a href="courses/add"
+                   class="btn btn-primary"
+                   role="button"
+                   style="float: right"
+                   aria-disabled="true">Добавить курс
+                </a>
+            </div>
+        </div>
+        <div class="card" th:each="course : ${courses}">
+            <h5 class="card-header" th:text="${course.getSubject().getSubjectTextDisplay()}"></h5>
+            <div class="card-body">
+                <h5 class="card-title" th:text="${course.getName()}"></h5>
+                <p class="card-text" th:text="${course.getDescription()}"></p>
+                <a th:href="'/courses/' + ${course.getId()}" class="btn btn-secondary">Подробнее</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

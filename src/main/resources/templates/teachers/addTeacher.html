@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+  <meta charset="UTF-8">
+  <title>Добавить курс</title>
+</head>
+<body>
+<div layout:fragment="content" style="overflow: auto; height: 500px;">
+  <h3 class="mt-3 mb-3">Добавить курс</h3>
+  <form style="max-width: 50vw" method="POST" th:action="@{/teachers/add}" th:object="${teacherForm}">
+    <div class="mb-3">
+      <label for="teacherFIO" class="form-label">Имя</label>
+      <!--            Название поля инпута должно строго соответствовать названию поля класса (DTO)-->
+      <input name="teacherFIO" type="text" class="form-control" id="teacherFIO">
+    </div>
+    <div class="mb-3">
+      <label for="description" class="form-label">О себе</label>
+      <input name="description" type="text" class="form-control" id="description">
+    </div>
+    <div class="mb-3">
+      <label for="subject" class="form-label">Предмет</label>
+      <select class="form-select" name="subject" id="subject">
+        <option selected>Выберете предмет из списка:</option>
+        <option th:each="subject : ${T(com.example.onlineschoolproject.model.Subject).values()}"
+                th:value="${subject}" th:text="${subject.getSubjectTextDisplay()}"></option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Добавить</button>
+    <button type="button" class="btn btn-secondary" onclick="window.history.back()">Назад</button>
+  </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Курс</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .card {
+            margin-bottom: 20px; /* Расстояние между блоками */
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div layout:fragment="content">
+        <h1>Информация о курсе</h1>
+        <div class="card">
+            <h2 class="card-header" th:text="${course.getName()}"></h2>
+            <div class="card-body">
+                <h5 class="card-title" th:text="${course.getSubject().getSubjectTextDisplay()}"></h5>
+                <p class="card-text" th:text="${course.getDescription()}"></p>
+                <p>Начало: <span th:text="${course.getStartDate()}"></span></p>
+                <p>Окончание: <span th:text="${course.getEndDate()}"></span></p>
+                <p>Длительность: <span th:text="${course.getDuration()}"></span> дней</p>
+                <p>Цена: <span th:text="${course.getPrice()}"></span></p>
+                <p>Предмет: <span th:text="${course.getSubject().getSubjectTextDisplay()}"></span></p>
+                <p>Преподаватель: <span th:text="${course.getTeacherId()}"></span></p>
+                <p>Вебинары: <span th:text="${course.getWebinarIds()}"></span></p>
+            </div>
+        </div>
+        <button type="button" class="btn btn-secondary" onclick="window.history.back()" style="margin-bottom: 20px">
+            Вернуться назад к списку курсов
+        </button>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

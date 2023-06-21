@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+<head>
+  <meta charset="UTF-8">
+  <title>Курс</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .card {
+      margin-bottom: 20px; /* Расстояние между блоками */
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div layout:fragment="content">
+    <h1>Информация о преподавателе</h1>
+    <div class="card">
+      <h2 class="card-header" th:text="${teacher.getTeacherFIO()}"></h2>
+      <div class="card-body">
+        <h5 class="card-title" th:text="${teacher.getSubject().getSubjectTextDisplay()}"></h5>
+        <p>Курсы данного преподавателя: <span th:text="${teacher.getCourseIds().forEach()}"></span></p>
+        <p>Вебинары данного преподавателя: <span th:text="${teacher.getWebinarIds()}"></span></p>
+      </div>
+    </div>
+    <button type="button" class="btn btn-secondary" onclick="window.history.back()" style="margin-bottom: 20px">
+      Вернуться назад к списку преподавателей
+    </button>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
